@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitanova Integralis — Salud y Confort en el Hogar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #BF9A40;
+    --gold-light: #D4B060;
+    --gold-pale: #F5EDD8;
+    --cacao: #4A4540;
+    --cacao-dark: #2C2820;
+    --cacao-light: #6B645E;
+    --cream: #FAFAF7;
+    --sage: #E8F0E4;
+    --white: #FFFFFF;
+    --text-dark: #2C2820;
+    --text-mid: #4A4540;
+    --text-light: #8A8078;
+    --border: #E0D8CC;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,247,0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-brand {
+    font-size: 15px; font-weight: 800; letter-spacing: 2.5px;
+    color: var(--cacao); text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--text-mid); transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: white;
+    border: none; padding: 11px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; transition: background 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    background: var(--cacao);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 28px; height: 1.5px;
+    background: var(--gold);
+  }
+  .hero-h1 {
+    font-size: 54px; font-weight: 800; line-height: 1.05;
+    color: white; margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .hero-h1 em {
+    font-style: normal; color: var(--gold);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 15px; font-weight: 400; line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    max-width: 380px; margin-bottom: 44px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: white;
+    border: none; padding: 15px 34px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 15px 34px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display: flex; gap: 44px;
+    margin-top: 56px; padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-num {
+    font-size: 30px; font-weight: 800; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-top: 5px; display: block;
+  }
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--sage);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-circles {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .circle {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(191,154,64,0.25);
+  }
+  .circle-1 { width: 380px; height: 380px; animation: spin 40s linear infinite; }
+  .circle-2 { width: 290px; height: 290px; border-style: dashed; animation: spin 25s linear infinite reverse; }
+  .circle-3 { width: 200px; height: 200px; animation: spin 15s linear infinite; opacity: 0.4; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-logo-card {
+    position: relative; z-index: 2;
+    background: white;
+    border-radius: 20px;
+    padding: 40px 44px;
+    text-align: center;
+    box-shadow: 0 24px 72px rgba(74,69,64,0.18);
+    width: 220px;
+  }
+  .logo-svg { margin: 0 auto 18px; display: block; }
+  .logo-name {
+    font-size: 14px; font-weight: 800; letter-spacing: 2.5px;
+    color: var(--cacao); text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .logo-tagline {
+    font-size: 9px; font-weight: 600; letter-spacing: 1.5px;
+    color: var(--text-light); text-transform: uppercase;
+    margin-top: 8px;
+    background: var(--sage);
+    padding: 5px 10px; border-radius: 3px;
+    display: inline-block;
+  }
+  .floating-badge {
+    position: absolute; z-index: 3;
+    background: white; border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 28px rgba(74,69,64,0.14);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .fb-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--gold-pale);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .fb-text { font-size: 11px; font-weight: 700; color: var(--cacao); }
+  .fb-sub { font-size: 9px; color: var(--text-light); font-weight: 500; margin-top: 1px; }
+  .badge-1 { bottom: 80px; left: 40px; }
+  .badge-2 { top: 80px; right: 40px; }
+
+  /* SECTIONS SHARED */
+  .section { padding: 88px 64px; }
+  .section-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .section-tag::before {
+    content: ''; display: block;
+    width: 20px; height: 1.5px; background: var(--gold);
+  }
+  .section-h2 {
+    font-size: 38px; font-weight: 800; line-height: 1.12;
+    color: var(--text-dark); margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .section-sub {
+    font-size: 14px; color: var(--text-light); line-height: 1.75;
+    max-width: 540px;
+  }
+
+  /* SERVICIOS */
+  .services { background: white; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    margin-top: 60px;
+    border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+  }
+  .service-card {
+    background: white; padding: 40px 32px;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .service-icon-wrap {
+    width: 52px; height: 52px;
+    background: var(--gold-pale); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .service-title {
+    font-size: 17px; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .service-desc {
+    font-size: 12px; line-height: 1.75; color: var(--text-light);
+  }
+
+  /* PLATAFORMA */
+  .platform { background: var(--cream); }
+  .platform-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 72px; align-items: center;
+    margin-top: 60px;
+  }
+  .platform-features { list-style: none; }
+  .platform-feature {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 22px 0; border-bottom: 1px solid var(--border);
+  }
+  .platform-feature:last-child { border-bottom: none; }
+  .pf-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .pf-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+  .pf-desc { font-size: 12px; color: var(--text-light); line-height: 1.65; }
+  .platform-mockup {
+    background: var(--cacao);
+    border-radius: 18px; overflow: hidden;
+    padding: 22px;
+  }
+  .mock-topbar {
+    display: flex; align-items: center; gap: 7px;
+    margin-bottom: 18px;
+  }
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mock-screen { border-radius: 10px; overflow: hidden; }
+  .mock-header {
+    background: var(--gold); padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .mock-header-title { font-size: 12px; font-weight: 700; color: white; }
+  .mock-header-sub { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .mock-body { background: white; }
+  .mock-patient {
+    display: flex; gap: 12px; align-items: center;
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+  }
+  .mock-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold-pale); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--gold);
+  }
+  .mock-pname { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+  .mock-page { font-size: 10px; color: var(--text-light); }
+  .mock-status {
+    margin-left: auto;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #EAF5E8; color: #2D7A27;
+    padding: 4px 9px; border-radius: 4px;
+  }
+  .mock-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .mock-metric { background: white; padding: 12px 14px; text-align: center; }
+  .mock-metric-val { font-size: 16px; font-weight: 800; color: var(--gold); }
+  .mock-metric-label { font-size: 9px; color: var(--text-light); margin-top: 2px; }
+  .mock-alert {
+    margin: 12px 14px;
+    background: #FFF8E8; border-left: 3px solid var(--gold);
+    padding: 10px 12px; border-radius: 4px;
+  }
+  .mock-alert-title { font-size: 11px; font-weight: 700; color: var(--cacao); }
+  .mock-alert-desc { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+  .fhir-badge {
+    display: inline-block;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    background: rgba(191,154,64,0.15);
+    border: 1px solid rgba(191,154,64,0.4);
+    color: var(--gold); padding: 4px 8px; border-radius: 3px;
+  }
+
+  /* B2B */
+  .b2b { background: var(--cacao); }
+  .b2b .section-h2 { color: white; }
+  .b2b .section-tag { color: var(--gold); }
+  .b2b .section-tag::before { background: var(--gold); }
+  .b2b .section-sub { color: rgba(255,255,255,0.5); }
+  .b2b-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 60px;
+  }
+  .b2b-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 34px 28px;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .b2b-card:hover {
+    background: rgba(191,154,64,0.08);
+    border-color: rgba(191,154,64,0.35);
+  }
+  .b2b-icon-wrap {
+    width: 50px; height: 50px; border-radius: 10px;
+    background: rgba(191,154,64,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+  }
+  .b2b-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 10px; }
+  .b2b-desc { font-size: 12px; line-height: 1.75; color: rgba(255,255,255,0.45); }
+  .b2b-percent {
+    display: inline-block; margin-top: 18px;
+    font-size: 24px; font-weight: 800; color: var(--gold);
+  }
+  .b2b-percent-label {
+    font-size: 10px; color: rgba(255,255,255,0.35);
+    margin-left: 5px; font-weight: 500;
+  }
+
+  /* TESTIMONIOS */
+  .testimonios { background: white; }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .test-card {
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 30px 26px;
+  }
+  .test-stars { color: var(--gold); font-size: 14px; margin-bottom: 18px; letter-spacing: 2px; }
+  .test-quote {
+    font-size: 13px; line-height: 1.8; color: var(--text-mid);
+    font-style: italic; margin-bottom: 22px;
+  }
+  .test-author { display: flex; align-items: center; gap: 10px; }
+  .test-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--gold); flex-shrink: 0;
+  }
+  .test-name { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+  .test-role { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+
+  /* CTA FINAL */
+  .cta-section {
+    background: var(--cacao-dark);
+    padding: 110px 64px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(191,154,64,0.12);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .cta-tag::before, .cta-tag::after {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--gold);
+  }
+  .cta-h2 {
+    font-size: 46px; font-weight: 800; color: white;
+    line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px;
+  }
+  .cta-h2 span { color: var(--gold); }
+  .cta-sub {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    max-width: 420px; margin: 0 auto 48px; line-height: 1.75;
+  }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; }
+
+  /* FOOTER */
+  .footer-main {
+    background: #1A1815; padding: 56px 64px 36px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 44px;
+  }
+  .footer-brand-name {
+    font-size: 13px; font-weight: 800; letter-spacing: 2.5px;
+    color: white; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .footer-brand-name span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 11px; color: rgba(255,255,255,0.3);
+    line-height: 1.7; max-width: 230px; margin-bottom: 20px;
+  }
+  .cert-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(191,154,64,0.12);
+    border: 1px solid rgba(191,154,64,0.25);
+    border-radius: 4px; padding: 6px 12px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .footer-col-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 11px; color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: white; }
+  .footer-bottom {
+    background: #1A1815;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 64px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-legal { font-size: 10px; color: rgba(255,255,255,0.2); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 32px; }
+    .hero-h1 { font-size: 38px; }
+    .section { padding: 60px 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .platform-inner { grid-template-columns: 1fr; }
+    .b2b-grid { grid-template-columns: 1fr; }
+    .test-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 72px 28px; }
+    .cta-h2 { font-size: 32px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    .footer-main { grid-template-columns: 1fr; padding: 40px 28px 28px; }
+    .footer-bottom { flex-direction: column; gap: 8px; padding: 16px 28px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Vitanova <span>Integralis</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#plataforma">Plataforma</a></li>
+    <li><a href="#empresas">Empresas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-cta" href="#contacto">Evaluación Gratuita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Monterrey · Ingeniería Biomédica</div>
+    <h1 class="hero-h1">
+      Tu hogar,
+      <em>seguro y</em>
+      confortable
+    </h1>
+    <p class="hero-sub">Adaptamos espacios para adultos mayores y pacientes en rehabilitación. Tecnología, equipamiento médico y monitoreo continuo en un solo sistema.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contacto">Evaluación Gratuita</a>
+      <a class="btn-outline" href="#plataforma">Conocer Plataforma</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">53%</span>
+        <span class="stat-label">Deducible fiscal empresarial</span>
+      </div>
+      <div>
+        <span class="stat-num">24/7</span>
+        <span class="stat-label">Monitoreo continuo</span>
+      </div>
+      <div>
+        <span class="stat-num">IB</span>
+        <span class="stat-label">Certificado Age Safe®</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circles">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+    </div>
+    <div class="hero-logo-card">
+      <svg class="logo-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 10 L68 32 L68 70 L12 70 L12 32 Z" stroke="#BF9A40" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+        <path d="M40 10 L68 32" stroke="#BF9A40" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M30 62 L30 46 L50 46 L50 62" stroke="#BF9A40" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <path d="M40 28 C40 28 30 35 30 42 C30 46.4 34.5 50 40 50 C45.5 50 50 46.4 50 42 C50 35 40 28 40 28 Z" stroke="#BF9A40" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="logo-name">VITANOVA<br>INTEGRALIS</div>
+      <div class="logo-tagline">Salud y Confort</div>
+    </div>
+    <div class="floating-badge badge-1">
+      <div class="fb-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 2L11.5 7H16.5L12.5 10.5L14 15.5L9 12.5L4 15.5L5.5 10.5L1.5 7H6.5Z" fill="#BF9A40"/>
+        </svg>
+      </div>
+      <div>
+        <div class="fb-text">Age Safe® Cert.</div>
+        <div class="fb-sub">Ingeniero Biomédico</div>
+      </div>
+    </div>
+    <div class="floating-badge badge-2">
+      <div class="fb-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="7" stroke="#BF9A40" stroke-width="1.5"/>
+          <path d="M9 5.5V9L11.5 11" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="fb-text">Monitoreo 24/7</div>
+        <div class="fb-sub">App familiar incluida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section services" id="servicios">
+  <div class="section-tag">Lo que hacemos</div>
+  <h2 class="section-h2">Servicios integrales para<br>el bienestar en el hogar</h2>
+  <p class="section-sub">Desde la adaptación física del espacio hasta el monitoreo digital continuo — todo en un solo proveedor, con respaldo de ingeniería biomédica certificada.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3L21 9.5V20H15V14H9V20H3V9.5Z" stroke="#BF9A40" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="service-title">Adaptación del Hogar</div>
+      <div class="service-desc">Barras de apoyo, rampas, iluminación, antideslizantes y modificaciones estructurales para prevenir caídas y facilitar la movilidad.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#BF9A40" stroke-width="1.5"/><path d="M8 12H16M12 8V16" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="service-title">Equipo Médico</div>
+      <div class="service-desc">Suministro y configuración de oxímetros, equipos CPAP, concentradores de oxígeno, sillas de ruedas y camas hospitalarias.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#BF9A40" stroke-width="1.5"/><path d="M12 8V12L15 14" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="service-title">Monitoreo Continuo</div>
+      <div class="service-desc">Detección pasiva de caídas, GPS/SOS wearable y panel familiar en tiempo real. Sin cámaras, sin invadir la privacidad.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3H5C4 3 3 4 3 5V9M15 3H19C20 3 21 4 21 5V9M9 21H5C4 21 3 20 3 19V15M15 21H19C20 21 21 20 21 19V15" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="service-title">Plataforma AgeTech</div>
+      <div class="service-desc">Panel médico con FHIR, adherencia a medicamentos, historial clínico e integración con aseguradoras y Salesforce Health Cloud.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.8 15.2 15 13 15H5C2.8 15 1 16.8 1 19V21M23 21V19C23 17.1 21.8 15.5 20 15.1M16 3.1C17.8 3.5 19 5.1 19 7C19 8.9 17.8 10.5 16 10.9M13 7C13 9.2 11.2 11 9 11C6.8 11 5 9.2 5 7C5 4.8 6.8 3 9 3C11.2 3 13 4.8 13 7Z" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="service-title">Atención a Demencia</div>
+      <div class="service-desc">Protocolos especializados para pacientes con Alzheimer: bloqueo de estufa automático, rutinas simplificadas y alertas para cuidadores.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#BF9A40" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#BF9A40" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="service-title">Canal B2B / Empresas</div>
+      <div class="service-desc">Beneficio laboral deducible al 53% para empleados. Convenios con aseguradoras, programas de retiro y prestaciones de salud corporativa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATAFORMA -->
+<section class="section platform" id="plataforma">
+  <div class="section-tag">Tecnología</div>
+  <h2 class="section-h2">Una plataforma,<br>todo el ecosistema</h2>
+  <p class="section-sub">El backend propietario de Vitanova conecta pacientes, familias, médicos y aseguradoras en un solo flujo de datos clínicos seguro.</p>
+  <div class="platform-inner">
+    <ul class="platform-features">
+      <li class="platform-feature">
+        <div class="pf-dot"></div>
+        <div>
+          <div class="pf-title">Panel familiar en tiempo real</div>
+          <div class="pf-desc">La familia recibe alertas, ve signos vitales y accede al historial desde la app móvil. Sin tecnicismos, sin complicaciones.</div>
+        </div>
+      </li>
+      <li class="platform-feature">
+        <div class="pf-dot"></div>
+        <div>
+          <div class="pf-title">Panel médico profesional</div>
+          <div class="pf-desc">Dashboard clínico con adherencia a medicamentos, exportación FHIR y seguimiento de diagnósticos.</div>
+        </div>
+      </li>
+      <li class="platform-feature">
+        <div class="pf-dot"></div>
+        <div>
+          <div class="pf-title">Integración con aseguradoras</div>
+          <div class="pf-desc">Compatible con Salesforce Health Cloud. Reportes automáticos para Banorte Seguros y otras aseguradoras.</div>
+        </div>
+      </li>
+      <li class="platform-feature">
+        <div class="pf-dot"></div>
+        <div>
+          <div class="pf-title">Suscripción mensual</div>
+          <div class="pf-desc">Modelo SaaS: desde $299 MXN/mes con monitoreo, app familiar, soporte y actualizaciones incluidas.</div>
+        </div>
+      </li>
+    </ul>
+    <div class="platform-mockup">
+      <div class="mock-topbar">
+        <div class="mock-dot" style="background:#E25A5A"></div>
+        <div class="mock-dot" style="background:#E2A15A"></div>
+        <div class="mock-dot" style="background:#5ABA6A"></div>
+        <span style="font-size:10px;color:rgba(255,255,255,0.3);margin-left:8px;font-family:'Montserrat',sans-serif;">Panel Médico · Vitanova</span>
+      </div>
+      <div class="mock-screen">
+        <div class="mock-header">
+          <div>
+            <div class="mock-header-title">Panel de Paciente</div>
+            <div class="mock-header-sub">Vitanova Integralis · Hoy</div>
+          </div>
+          <div class="fhir-badge">FHIR</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-patient">
+            <div class="mock-avatar">MR</div>
+            <div>
+              <div class="mock-pname">María R., 74 años</div>
+              <div class="mock-page">Hipertensión · Diabetes T2</div>
+            </div>
+            <div class="mock-status">Estable</div>
+          </div>
+          <div class="mock-metrics">
+            <div class="mock-metric">
+              <div class="mock-metric-val">98%</div>
+              <div class="mock-metric-label">SpO₂</div>
+            </div>
+            <div class="mock-metric">
+              <div class="mock-metric-val">120/80</div>
+              <div class="mock-metric-label">Presión</div>
+            </div>
+            <div class="mock-metric">
+              <div class="mock-metric-val">95%</div>
+              <div class="mock-metric-label">Adherencia</div>
+            </div>
+          </div>
+          <div class="mock-alert">
+            <div class="mock-alert-title">Medicamento pendiente — 3:00 PM</div>
+            <div class="mock-alert-desc">Metformina 500mg · Recordatorio enviado a familiar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B -->
+<section class="section b2b" id="empresas">
+  <div class="section-tag">Canal Empresarial</div>
+  <h2 class="section-h2">Beneficio laboral deducible<br>para tu empresa</h2>
+  <p class="section-sub">Ofrece seguridad en el hogar para los familiares de tus empleados como prestación superior — y dedúcelo hasta en un 53% ante el SAT.</p>
+  <div class="b2b-grid">
+    <div class="b2b-card">
+      <div class="b2b-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 7V11C3 15.5 6.5 19.7 11 21C15.5 19.7 19 15.5 19 11V7L11 2Z" stroke="#BF9A40" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="b2b-title">Deducibilidad Fiscal</div>
+      <div class="b2b-desc">Gastos de adaptación y equipo médico para familiares de empleados son deducibles como prestaciones de previsión social ante el SAT.</div>
+      <div><span class="b2b-percent">53%</span><span class="b2b-percent-label">deducible</span></div>
+    </div>
+    <div class="b2b-card">
+      <div class="b2b-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="#BF9A40" stroke-width="1.5"/><path d="M3 19C3 15.7 6.6 13 11 13C15.4 13 19 15.7 19 19" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="b2b-title">Integración con Seguros</div>
+      <div class="b2b-desc">Compatible con Salesforce Health Cloud. Reportes automáticos para aseguradoras como Banorte Seguros y planes de salud corporativos.</div>
+    </div>
+    <div class="b2b-card">
+      <div class="b2b-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="14" rx="2" stroke="#BF9A40" stroke-width="1.5"/><path d="M2 9H20M7 5V3M15 5V3" stroke="#BF9A40" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="b2b-title">Gestión Centralizada</div>
+      <div class="b2b-desc">Panel corporativo para gestionar múltiples pacientes, generar reportes de impacto y facturación CFDI automática con tu RFC.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section testimonios">
+  <div class="section-tag">Casos de éxito</div>
+  <h2 class="section-h2">Lo que dicen nuestras familias</h2>
+  <p class="section-sub">Adultos mayores, cuidadores y empresas que ya confían en Vitanova Integralis para la seguridad y el bienestar en el hogar.</p>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"Instalaron las barras de baño y el sistema de monitoreo en un solo día. Mi mamá se siente más segura y yo puedo ver sus signos vitales desde el trabajo."</p>
+      <div class="test-author">
+        <div class="test-avatar">AL</div>
+        <div>
+          <div class="test-name">Ana Leal</div>
+          <div class="test-role">Hija · Monterrey, NL</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"El equipo tiene certificación de ingeniería biomédica real. No improvisaron nada — evaluaron el hogar completo y nos dieron un plan claro con COFEPRIS en regla."</p>
+      <div class="test-author">
+        <div class="test-avatar">Dr</div>
+        <div>
+          <div class="test-name">Dr. Roberto Vega</div>
+          <div class="test-role">Geriatra · Hospital privado</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"Lo incluimos como prestación para nuestros 200 empleados. La deducibilidad del 53% lo hizo fácil de aprobar con finanzas. Un diferenciador real para retener talento."</p>
+      <div class="test-author">
+        <div class="test-avatar">MG</div>
+        <div>
+          <div class="test-name">Mario González</div>
+          <div class="test-role">Director RRHH · Empresa industrial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contacto">
+  <div class="cta-ring" style="width:680px;height:680px;"></div>
+  <div class="cta-ring" style="width:460px;height:460px;"></div>
+  <div class="cta-inner">
+    <div class="cta-tag">Empieza hoy</div>
+    <h2 class="cta-h2">Evaluación gratuita<br>del <span>hogar</span></h2>
+    <p class="cta-sub">Un ingeniero biomédico certificado visita el hogar, identifica riesgos y entrega un plan de adaptación sin costo ni compromiso.</p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="mailto:hola@vitanovaintegralis.com" style="padding:16px 44px;font-size:13px;">Agendar Evaluación</a>
+      <a class="btn-outline" href="#servicios" style="padding:16px 44px;font-size:13px;">Ver Servicios</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-main">
+  <div>
+    <div class="footer-brand-name">Vitanova <span>Integralis</span></div>
+    <p class="footer-tagline">Salud y confort en el Hogar. Ingeniería biomédica aplicada a la vida cotidiana.</p>
+    <div class="cert-badge">Age Safe® · COFEPRIS</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Servicios</div>
+    <ul class="footer-links">
+      <li><a href="#servicios">Adaptación del Hogar</a></li>
+      <li><a href="#servicios">Equipo Médico</a></li>
+      <li><a href="#servicios">Monitoreo GPS/SOS</a></li>
+      <li><a href="#plataforma">Panel Digital</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Empresa</div>
+    <ul class="footer-links">
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#empresas">Canal B2B</a></li>
+      <li><a href="#empresas">Aseguradoras</a></li>
+      <li><a href="#">Aviso de privacidad</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contacto</div>
+    <ul class="footer-links">
+      <li><a href="#">Monterrey, NL</a></li>
+      <li><a href="mailto:hola@vitanovaintegralis.com">hola@vitanovaintegralis.com</a></li>
+      <li><a href="#">WhatsApp</a></li>
+      <li><a href="#">www.vitanovaintegralis.com</a></li>
+    </ul>
+  </div>
+</div>
+<div class="footer-bottom">
+  <span class="footer-legal">© 2025 Vitanova Integralis, SAS de CV. Todos los derechos reservados.</span>
+  <span class="footer-legal">RFC registrado · Facturación CFDI disponible</span>
+</div>
+
+</body>
+</html>
